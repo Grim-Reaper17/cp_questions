@@ -1,40 +1,21 @@
-const topic = ['10101',
-    '11100',
-    '11010',
-    '00101']
-let newArr = []
+// Link to the original problem : https://www.hackerrank.com/challenges/acm-icpc-team/problem
+
+// Here to find the number of max topics we need to check if any character from the two pairs is equal to '1' because if one of the persons in the pair know about the topic in the pair it is considered that the topic is known.
+
+let topic = ['10101','11100','11010','00101']
+let max = Number.NEGATIVE_INFINITY
+let teams = 0;
 for(let i=0; i<topic.length; i++){
-    // console.log('Iteration Break')
-for(let j=i + 1; j<topic.length; j++){
-    // Creating another loop for the second pair.
-  let count =0;
-  for(let k=0; k<topic[0].length; k++){
-    //   console.log(topic[i][k] + '  ' + topic[j][k])
-    // Finally checkign the number of topics knows by both paris collectively.
-/*
-The loop goes something like this.
-['11110' , '10101', '00001']
-Pair (0,1)(1,2)(2,1)
-And then the check the indices of their string for know topics.
-Like:
-['11110' , '10101']
-topic[i][k] && topic[j][k]
-The counter goes up whenver the string index equals 1.
-*/
-     if(topic[i][k] === '1' || topic[j][k] === '1'){
-        count +=1  
-     }
-  }
-newArr.push(count)
+for(let j=i+1; j<topic.length; j++){
+    let count = 0;
+for(let k=0; k<topic[0].length; k++){
+if(topic[i][k]=='1'||topic[j][k]=='1'){
+count++
 }
 }
-const max = newArr.reduce((a,b)=>{
-    return Math.max(a,b)
-})
-let secondCount = 0; 
-for(let key of newArr){
-    if(key == max){
-     secondCount += 1   
-    }
+if(count>max){teams=0;teams++;}
+else if(count==max)teams++;
+max = Math.max(max,count)
 }
-console.log([max, secondCount])
+}
+console.log([max,teams])

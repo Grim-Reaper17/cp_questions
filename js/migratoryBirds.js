@@ -1,23 +1,18 @@
-let arr= [1,4,4,4,5,3]
-function sortNumber(a, b) {
-    return a - b;
-  }
-  arr.sort(sortNumber)
+let arr = [2 ,4 ,3 ,2 ,3 ,1 ,2 ,1 ,3 ,3]
 let map = new Map()
-for(let key of arr){
-if(map.has(key)){
-map.set(key , map.get(key)+1)
+for(let i=0; i<arr.length; i++){
+if(map.has(arr[i])){
+map.set(arr[i],map.get(arr[i])+1)
 }
 else{
-    map.set(key , 1)
+map.set(arr[i],1)
 }
 }
-let curMax = Math.max(...map.values())
+let maxElem= Math.max(...map.values())
+let output = Number.POSITIVE_INFINITY;
 map.forEach((element,key)=>{
-if(element!==curMax){
-map.delete(key)
+if(element==maxElem&&output>key){
+output = key
 }
-
 })
-let output= Math.min(...map.keys())
-return output
+console.log(output)

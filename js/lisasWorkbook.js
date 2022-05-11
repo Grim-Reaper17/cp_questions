@@ -1,21 +1,16 @@
 // Link to the original problem : https://www.hackerrank.com/challenges/lisa-workbook/problem
 
-let arr =[4,2,6,1,10]
-let k =3;
-let count =0 ;
-let page = 0;
-for(let i=0; i<arr.length; i++){
-for(let j= 1; j<=arr[i]; j++){
-    console.log(j)
-if(k==1 || j%k ==1){
-    // This is the main functionality here and mostly the part in use is the right hand side part i.e. j%k == 1 and it means that increase page on 4 for e.g but it won't work on a single length array and for that case we have checked very specifically for the first condition to staisfy that type of test case.
-    page +=1
-    console.log('changing page')
-}
-if(page == j){
-    count+=1
+[n,k,arr] = [5,3,[4,2,6,1,10]]
+let page,problemCounter;
+[page,problemCounter] = [0,0]
+for(let i=0; i<n; i++){
+let counter=-1;
+// We can either set the counter to -1 or set the arr[i]+1 to just arr[i] but the nature of the code does not allow to that because then we can miss number that was equal to page so we instead set the counter to -1 to copensate for the extra iteration.
+page++
+for(let j=1; j<arr[i]+1; j++){
+counter++    
+if(counter==k){counter=0;page++};
+if(page==j)problemCounter++
 }
 }
-console.log('break;')
-}
-console.log(count++)
+console.log(problemCounter)

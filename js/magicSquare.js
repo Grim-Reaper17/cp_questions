@@ -42,8 +42,6 @@ const possibleMatrices = [
         [[4,3,8],[9,5,1],[2,7,6]],
         [[6,7,2],[1,5,9],[8,3,4]],
         [[2,7,6],[9,5,1],[4,3,8]],
-
-
 ]
 const s = [
     [4, 5 ,8],
@@ -65,9 +63,6 @@ Here the s[i][j] mean starting from the first index of the first array and then 
 cost += Math.abs(s[i][j] - possibleMatrices[m][i][j])
         }
     }
-array.push(cost)
+minCost = Math.min(minCost,cost)
 }
-const min = array.reduce((accm,cVal)=>{
-    return Math.min(accm , cVal)
-})
-console.log(min)
+console.log(minCost)

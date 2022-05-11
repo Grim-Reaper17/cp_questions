@@ -1,18 +1,6 @@
-let array = [1,2,3,3,3]
+// Link to the original problem : https://www.hackerrank.com/challenges/birthday-cake-candles/problem?isFullScreen=false
 
-let maxVal = array.reduce((a,b)=>{
-    return Math.max(a,b)
-})
-console.log(maxVal)
+// This question can be solved in an oneLiner but we have saved the max element in a seperate variable because calculating it everytime give TLE on testCases with high values.
 
-const allIndex = (arr , value)=>{
-let indexes = []
-for(let i=0; i<arr.length; i++){
-    if(arr[i] == value){
-        indexes.push(i)
-    }
-
-}
-return indexes
-}
-console.log(allIndex(array , maxVal))
+let max = Math.max(...candles)
+console.log(candles.filter((element)=>{return element == max}).length)

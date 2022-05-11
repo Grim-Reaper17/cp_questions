@@ -1,25 +1,14 @@
-let grid = ['1912', '8316367721984838592282693133446625341275338241466354524729424384615647514615523763198353549484986131', '1892', '1912']
-let newArr = []
-let output =[]
-for(let i=0; i<grid.length; i++){
-newArr.push(grid[i].split(''))
-}
-for(let j=0; j<newArr.length; j++){
-    if(j==0 || j==newArr.length-1){
-    
-    }
-else{
-for(let k=0; k<newArr[j].length; k++){
-if(k!=0 && k!=newArr[j].length - 1){
-if(newArr[j][k] > newArr[j][k-1] && newArr[j][k+1]<newArr[j][k]){
-    newArr[j][k] = 'X'
-}
-}
+// Link to the original problem : https://www.hackerrank.com/challenges/cavity-map/problem
 
+[grid]=  [['989', '191','111']]
+for(let i=1; i<grid.length-1; i++){
+for(let j=1; j<grid[i].length-1;j++){
+if(grid[i][j]>grid[i-1][j]&&grid[i][j]>grid[i+1][j]&&grid[i][j]>grid[i][j-1]&&grid[i][j]>grid[i][j+1]){
+    // We can't use the string.replace approach because replace finds the first instance of the character to replace which might not be the case everytime.
+    let sArr = grid[i].split('')
+    sArr[j] = 'X'
+    grid[i] = sArr.join('')
 }
 }
 }
-newArr.forEach((element)=>{
-    output.push(element.join(''))
-})
-console.log(output)
+console.log(grid)
